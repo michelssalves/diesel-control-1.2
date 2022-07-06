@@ -33,7 +33,7 @@ include 'assets/controllers/checkAcess.php';
                     <label class="w3-bar-item w3-button w3-left">Usuario Logado:</label>
                     <a class="w3-bar-item w3-button"><?= $usuario; ?></a>
                 </div>
-                <div class="w3-bar w3-light-grey">
+                <div class="w3-bar w3-light-grey w3-container">
                     <table>
                         <tr>
                             <th>Acertos</th>
