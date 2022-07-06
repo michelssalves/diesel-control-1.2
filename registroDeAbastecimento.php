@@ -56,6 +56,7 @@ include 'assets/controllers/checkAcess.php';
                                         echo '<option value="' . $prefixo['id_veiculo'] . '">' . $prefixo['prefixo'] . '</option>';
                                     }
                                     ?>
+                                    
                                 </select>
                             </div>
                         </div>
