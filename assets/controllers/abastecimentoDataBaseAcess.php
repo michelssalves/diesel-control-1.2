@@ -424,10 +424,12 @@ function listarAcertos($id_funcionario){
     include 'config.php';
 
 
-    $sql = $pdo->prepare("SELECT a.acertos, b.erros, c.qtde_abastecimentos FROM 
+    $sql = $pdo->prepare("SELECT a.acertos, b.erros, c.qtde_abastecimentos, d.mes_atual FROM 
     (SELECT COUNT(erro_status) AS erros FROM erros_de_registro WHERE id_funcionario = :id_funcionario AND id_erro <> 4) AS b, 
     (SELECT COUNT(erro_status) AS acertos FROM erros_de_registro WHERE id_funcionario = :id_funcionario AND id_erro = 4) AS a, 
-    (SELECT COUNT(id_abastecimento) AS qtde_abastecimentos FROM erros_de_registro WHERE id_funcionario = :id_funcionario) AS c");
+    (SELECT COUNT(id_abastecimento) AS qtde_abastecimentos FROM erros_de_registro WHERE id_funcionario = :id_funcionario) AS c,
+    (SELECT DISTINCT(MONTH(NOW())) AS mes_atual FROM erros_de_registro) AS d
+     WHERE d.mes_atual = d.mes_atual");
     $sql->bindValue(':id_funcionario', $id_funcionario);
     $sql->execute();
     $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
