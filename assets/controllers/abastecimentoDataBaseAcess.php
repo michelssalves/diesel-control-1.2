@@ -429,7 +429,7 @@ function listarAcertos($id_funcionario){
 
         $txtTable = $txtTable.'<tr>
         <td>'.$row['acertos'].'</td>
-        </tr>';
+        ';
     }
 
     $sql = $pdo->prepare("SELECT COUNT(erro_status) AS erros FROM erros_de_registro WHERE id_funcionario = :id_funcionario AND id_erro <> 4 ");
@@ -439,7 +439,7 @@ function listarAcertos($id_funcionario){
 
     foreach($lista as $row){
 
-        $txtTable = $txtTable.'<tr>
+        $txtTable = $txtTable.'
         <td>'.$row['erros'].'</td>
         </tr>';
     }
