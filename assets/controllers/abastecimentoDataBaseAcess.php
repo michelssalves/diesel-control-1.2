@@ -381,15 +381,12 @@ function consultarIdEquipamento($numero_equipamento){
 function registrarErro($id_funcionario, $id_erro){
 
     include 'config.php';
-    include 'functions.php';
 
     $x = new DateTime('NOW', new DateTimeZone('America/Sao_Paulo'));
     $erro_data = $x->format('Y-m-d H:i');
     $erro_status = 1;
     
     $sql = $pdo->prepare("INSERT INTO erros_de_registro(id_funcionario, id_erro, erro_status, erro_data) VALUES(:id_funcionario, id_erro, erro_status, erro_data)");
-    var_dump($sql);
-
     $sql->bindValue(':id_funcionario', $id_funcionario);
     $sql->bindValue(':id_erro', $id_erro);
     $sql->bindValue(':erro_status', $erro_status);

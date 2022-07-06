@@ -44,7 +44,7 @@ include 'assets/controllers/checkAcess.php';
                         <div class="field">
                             <div class="control">
                                 <label>Prefixo</label>
-                                <select class="form-select" name="prefixo" id="prefixo" >
+                                <select class="form-select" name="prefixo" id="prefixo" required>
                                     <option value="">Escolha o Prefixo</option>
                                     <?php
                                     $ativado = 1;
@@ -56,7 +56,6 @@ include 'assets/controllers/checkAcess.php';
                                         echo '<option value="' . $prefixo['id_veiculo'] . '">' . $prefixo['prefixo'] . '</option>';
                                     }
                                     ?>
-                                    
                                 </select>
                             </div>
                         </div>
@@ -64,19 +63,19 @@ include 'assets/controllers/checkAcess.php';
                         <div class="field">
                             <div class="control">
                                 <div class="form-check form-check-inline">
-                                    <input style="height: 50px; width: 50px;" class="form-check-input" type="radio" name="bomba" id="bomba" value="GASOLINA" >
+                                    <input style="height: 50px; width: 50px;" class="form-check-input" type="radio" name="bomba" id="bomba" value="GASOLINA" required>
                                     <label class="form-check-label" for="inlineRadio2">GASOLINA</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input style="height: 50px; width: 50px;" class="form-check-input" type="radio" name="bomba" id="bomba" value="BOMBA 01" >
+                                    <input style="height: 50px; width: 50px;" class="form-check-input" type="radio" name="bomba" id="bomba" value="BOMBA 01" required>
                                     <label class="form-check-label" for="inlineRadio1">B01</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input style="height: 50px; width: 50px;" class="form-check-input" type="radio" name="bomba" id="bomba" value="BOMBA 02" >
+                                    <input style="height: 50px; width: 50px;" class="form-check-input" type="radio" name="bomba" id="bomba" value="BOMBA 02" required>
                                     <label class="form-check-label" for="inlineRadio2">B02</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input style="height: 50px; width: 50px;" class="form-check-input" type="radio" name="bomba" id="bomba" value="BOMBA 03" >
+                                    <input style="height: 50px; width: 50px;" class="form-check-input" type="radio" name="bomba" id="bomba" value="BOMBA 03" required>
                                     <label class="form-check-label" for="inlineRadio3">B03</label>
                                 </div>
                             </div>
@@ -99,7 +98,7 @@ include 'assets/controllers/checkAcess.php';
                 <div class="field">
                     <div class="control">
                         <label>Km</label>
-                        <br><input onkeyup="somenteNumeros(this);" onblur="calcularDiferencaKm(),calcularMedia();" id="km" name="km" type="number" step="0.01" class="form-control" placeholder="Km" autofocus >
+                        <br><input onkeyup="somenteNumeros(this);" onblur="calcularDiferencaKm(),calcularMedia();" id="km" name="km" type="number" step="0.01" class="form-control" placeholder="Km" autofocus required>
                     </div>
                 </div>
                 <div class="field">
@@ -117,7 +116,7 @@ include 'assets/controllers/checkAcess.php';
                 <div class="field">
                     <div class="control">
                         <label>Horimetro</label>
-                        <br><input onkeyup="somenteNumeros(this);" onblur="calcularDiferencaHr();" id="hr" name="hr" type="number" class="form-control" step="0.01" placeholder="Hr" autofocus >
+                        <br><input onkeyup="somenteNumeros(this);" onblur="calcularDiferencaHr();" id="hr" name="hr" type="number" class="form-control" step="0.01" placeholder="Hr" autofocus required>
                     </div>
                 </div>
                 <div class="field">
@@ -129,21 +128,21 @@ include 'assets/controllers/checkAcess.php';
                 <div class="field">
                     <div class="control">
                         <label>Odometro Final</label>
-                        <input onkeyup="somenteNumeros(this);" onblur="calcularLitrosOd();" id="odometrofinal" name="odometrofinal" type="number" step="0.01" class="form-control" placeholder="Odometro Final" autofocus >
+                        <input onkeyup="somenteNumeros(this);" onblur="calcularLitrosOd();" id="odometrofinal" name="odometrofinal" type="number" step="0.01" class="form-control" placeholder="Odometro Final" autofocus required>
                     </div>
                 </div>
                                         
                 <div class="field">
                     <div class="control">
                         <label>Litros</label>
-                        <br><input onkeyup="somenteNumeros(this);" onblur="calcularMedia();" id="litros" name="litros" type="number" step="0.01" class="form-control" placeholder="Litros" autofocus >
+                        <br><input onkeyup="somenteNumeros(this);" onblur="calcularMedia();" id="litros" name="litros" type="number" step="0.01" class="form-control" placeholder="Litros" autofocus required>
                     </div>
                 </div>
                 <?php if($permissao == 1){ ?>
                     <div class="field">
                             <div class="control">
                                 <label>Data  Hora do Abastecimento</label>
-                                <br><input id="data_abastecimento" name="data_abastecimento" type="datetime-local" class="form-control" placeholder="Data Hora do Abastecimento" autofocus >
+                                <br><input id="data_abastecimento" name="data_abastecimento" type="datetime-local" class="form-control" placeholder="Data Hora do Abastecimento" autofocus required>
                             </div>
                         </div>
     
@@ -151,14 +150,14 @@ include 'assets/controllers/checkAcess.php';
                 <div class="field">
                     <div class="control">
                         <label>Litros Odometro</label>
-                        <br><input readonly id="litros_od" name="litros_od" type="text" class="form-control" placeholder="Litros Odometro" autofocus >
+                        <br><input readonly id="litros_od" name="litros_od" type="text" class="form-control" placeholder="Litros Odometro" autofocus required>
                     </div>
                 </div>
                 <div class="field">
                     <div class="control">   
                         <label>Media do Veiculo</label>
-                        <br><input readonly id="media" name="media" type="text" class="form-control" placeholder="Media" autofocus >
-                        <br><input hidden name="acao" value="registrar-abastecimento" type="text"  > 
+                        <br><input readonly id="media" name="media" type="text" class="form-control" placeholder="Media" autofocus required>
+                        <br><input hidden name="acao" value="registrar-abastecimento" type="text"  required> 
                     </div>
                 </div>
                     <button type="submit" class="tn btn-primary btn-lg">Cadastrar</button>
