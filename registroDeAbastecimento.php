@@ -24,17 +24,18 @@ include 'assets/controllers/checkAcess.php';
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div>
+<div class="container-md">
+        <div class="container-lg">
+            <div class="container-xl">
+                <div class="container-xxl">    
+    <div class="field">
         <table>
             <tr>
                 <th>Acertos</th>
             </tr>
         </table>
     </div>
-    <div class="container-md">
-        <div class="container-lg">
-            <div class="container-xl">
-                <div class="container-xxl">
+
                 <div class="w3-bar w3-light-grey">
                     <a href="logout-v2"class="w3-bar-item w3-button w3-red w3-right">Sair</a>
                     <label class="w3-bar-item w3-button w3-left">Usuario Logado:</label>
