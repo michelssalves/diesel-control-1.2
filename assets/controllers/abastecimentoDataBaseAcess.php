@@ -196,8 +196,8 @@ function registrarAbastecimento(){
         $id_erro = 1;
         registrarErro($id_funcionario, $id_erro);
     }
-   //if($diferencahr < 0 || $diferencahr > 48){$id_erro = 2;registrarErro($id_funcionario, $id_erro);}
-   // if($litros <> $litros_od){$id_erro = 3;registrarErro($id_funcionario, $id_erro);}
+   if($diferencahr < 0 || $diferencahr > 48){$id_erro = 2;registrarErro($id_funcionario, $id_erro);}
+   if($litros <> $litros_od){$id_erro = 3;registrarErro($id_funcionario, $id_erro);}
 
     if($data_abastecimento == ''){
          
@@ -243,7 +243,7 @@ function registrarAbastecimento(){
     $sql->execute();
 
     $_SESSION['msg'] = '<div class="w3-green">CADASTRADO COM SUCESSO!</div>';
-  //  header("Location: abastecer-veiculos-v2");
+    header("Location: abastecer-veiculos-v2");
     
 } 
 function alterarAbastecimento(){
