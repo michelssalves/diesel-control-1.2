@@ -428,7 +428,7 @@ function listarAcertos($id_funcionario){
     foreach($lista as $row){
 
         $txtTable = $txtTable.'<tr>
-        <td>'.$row['acertos'].'</td>
+        <td><center>'.$row['acertos'].'</td>
         ';
     }
 
@@ -440,7 +440,7 @@ function listarAcertos($id_funcionario){
     foreach($lista as $row){
 
         $txtTable = $txtTable.'
-        <td>'.$row['erros'].'</td>
+        <td><center>'.$row['erros'].'</td>
         </tr>';
     }
 
