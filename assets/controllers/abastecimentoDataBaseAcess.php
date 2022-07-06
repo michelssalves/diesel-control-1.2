@@ -243,7 +243,7 @@ function registrarAbastecimento(){
     $sql->execute();
 
     $_SESSION['msg'] = '<div class="w3-green">CADASTRADO COM SUCESSO!</div>';
-    header("Location: abastecer-veiculos-v2");
+  //  header("Location: abastecer-veiculos-v2");
     
 } 
 function alterarAbastecimento(){
