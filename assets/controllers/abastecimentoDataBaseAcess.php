@@ -432,6 +432,7 @@ function listarAcertos($id_funcionario){
      WHERE d.mes_atual = 8");
     $sql->bindValue(':id_funcionario', $id_funcionario);
     $sql->execute();
+    if($sql->rowCount() > 0){
     $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
    
     foreach($lista as $row){
@@ -444,6 +445,12 @@ function listarAcertos($id_funcionario){
         <td><center>'.number_format($v2,'2',',','.').'%</td>
         </tr>';
         
+    }}else{
+        $txtTableQuadro = $txtTableQuadro.'<tr>
+        <td><center>0</td>
+        <td><center>0</td>
+        <td><center>0%</td>
+        </tr>';
     }
     return $txtTableQuadro;
 }
