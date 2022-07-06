@@ -249,7 +249,7 @@ function registrarAbastecimento(){
     $sql->execute();
 
     $_SESSION['msg'] = '<div class="w3-green">CADASTRADO COM SUCESSO!</div>';
-    header("Location: abastecer-veiculos");
+    header("Location: abastecer-veiculos-v2");
     
 } 
 function alterarAbastecimento(){
@@ -296,7 +296,7 @@ function alterarAbastecimento(){
     $sql->bindValue(':media', $media);
     $sql->execute();
 
-    header("Location: abastecida-alterada");
+    header("Location: abastecida-alterada-v2");
 }   
 function excluirAbastecimento(){
 
@@ -310,7 +310,7 @@ function excluirAbastecimento(){
 
     $sql->execute();
 
-    header("Location: abastecida-excluida");
+    header("Location: abastecida-excluida-v2");
 
 }
 function listarAbastecimentos(){

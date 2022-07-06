@@ -97,9 +97,9 @@ function cadastroAlteracaoVeiculo(){
 			$sql->bindValue(':status_veiculo', $status_veiculo);
 			$sql->execute();
         if($menu){
-            header("Location: veiculo-cadastrado");
+            header("Location: veiculo-cadastrado-v2");
         }else{
-            header("Location: veiculo-alterado");
+            header("Location: veiculo-alterado-v2");
         }
         
 }
@@ -156,7 +156,7 @@ function filtrarVeiculos($filtroPrefixo, $filtroCombustivel,$filtroMarca, $filtr
                 );
 
                 $info = http_build_query($info);
-                $url ='alterarVeiculo.php?'.$info;
+                $url ='alterar-veiculo-v2?'.$info;
                 $link = "PopupCenter('$url','Veiculos',400,900)";
                 $x++;
                 $txtTableVeiculos .= '<tr>
