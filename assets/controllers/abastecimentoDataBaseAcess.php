@@ -196,14 +196,8 @@ function registrarAbastecimento(){
         $id_erro = 1;
         registrarErro($id_funcionario, $id_erro);
     }
-    if($diferencahr < 0 || $diferencahr > 48){
-        $id_erro = 2;
-        registrarErro($id_funcionario, $id_erro);
-    }
-    if($litros <> $litros_od){
-        $id_erro = 3;
-        registrarErro($id_funcionario, $id_erro);
-    }
+   //if($diferencahr < 0 || $diferencahr > 48){$id_erro = 2;registrarErro($id_funcionario, $id_erro);}
+   // if($litros <> $litros_od){$id_erro = 3;registrarErro($id_funcionario, $id_erro);}
 
     if($data_abastecimento == ''){
          
@@ -393,7 +387,7 @@ function registrarErro($id_funcionario, $id_erro){
     $sql->bindValue(':erro_data', $erro_data);
     $sql->execute();
 
-  
+  return var_dump($sql);
 
 }
 
