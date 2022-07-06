@@ -436,7 +436,7 @@ function listarAcertos($id_funcionario){
 
         $v1 = $row['acertos'] * 100; 
         $v2 = $v1/$row['qtde_abastecimentos'];
-        $txtTable = $txtTable.'<tr>
+        $txtTableQuadro = $txtTableQuadro.'<tr>
         <td><center>'.$row['acertos'].'</td>
         <td><center>'.$row['erros'].'</td>
         <td><center>'.v2($v2).'</td>
@@ -444,6 +444,6 @@ function listarAcertos($id_funcionario){
         
     }
 
-    return $txtTable;
+    return $txtTableQuadro;
 }
 ?>
