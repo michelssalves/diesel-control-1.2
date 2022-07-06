@@ -375,7 +375,7 @@ function consultarIdEquipamento($numero_equipamento){
 function registrarErro($id_funcionario, $id_erro){
     echo $id_funcionario;
     echo $id_erro;
-    /*
+    
     include 'config.php';
 
     $x = new DateTime('NOW', new DateTimeZone('America/Sao_Paulo'));
@@ -389,7 +389,7 @@ function registrarErro($id_funcionario, $id_erro){
     $sql->bindValue(':erro_data', $erro_data);
     $sql->execute();
 
-    return var_dump($sql);*/
+    return var_dump($sql);
 
 }
 
