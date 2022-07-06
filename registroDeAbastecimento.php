@@ -37,8 +37,8 @@ include 'assets/controllers/checkAcess.php';
                 <table class="table table-bordered">
                 <thead class="thead-dark" >
                     <tr>
-                        <th><center>Acertos</th>
-                        <th><center>Erros</th>
+                        <th class="text-success"><center>Acertos</th>
+                        <th class="text-danger"><center>Erros</th>
                         <th><center>% Acertos</th>  
                     </tr>
                 </thead>
