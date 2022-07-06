@@ -35,8 +35,8 @@ include 'assets/controllers/checkAcess.php';
                 </div>
                 <div class="w3-bar w3-light-grey w3-container">
                 <table class="table" style="border: 2px;">
-                <thead class="thead-dark" style="border: 2px;">
-                    <tr>
+                <thead class="thead-dark" >
+                    <tr style="border: 2px;">
                         <th><center>Acertos</th>
                         <th><center>Erros</th>
                         <th><center>% Acertos</th>  
