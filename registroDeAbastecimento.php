@@ -34,8 +34,8 @@ include 'assets/controllers/checkAcess.php';
                     <a class="w3-bar-item w3-button"><?= $usuario; ?></a>
                 </div>
                 <div class="w3-bar w3-light-grey w3-container">
-                <table class="table table-bordered">
-                <thead class="thead-dark">
+                <table class="table">
+                <thead class="thead-dark table-bordered">
                     <tr>
                         <th><center>Acertos</th>
                         <th><center>Erros</th>
