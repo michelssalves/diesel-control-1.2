@@ -194,7 +194,18 @@ function registrarAbastecimento(){
 
     if($diferencakm < 0 || $diferencakm > 600){
         $id_erro = 1;
-        registrarErro($id_funcionario, $id_erro);
+
+        $x = new DateTime('NOW', new DateTimeZone('America/Sao_Paulo'));
+        $erro_data = $x->format('Y-m-d H:i');
+        $erro_status = 1;
+        var_dump($sql);
+        
+        $sql = $pdo->prepare("INSERT INTO erros_de_registro(id_funcionario, id_erro, erro_status, erro_data) VALUES(:id_funcionario, id_erro, erro_status, erro_data)");
+        $sql->bindValue(':id_funcionario', $id_funcionario);
+        $sql->bindValue(':id_erro', $id_erro);
+        $sql->bindValue(':erro_status', $erro_status);
+        $sql->bindValue(':erro_data', $erro_data);
+        $sql->execute();
     }
    //if($diferencahr < 0 || $diferencahr > 48){$id_erro = 2;registrarErro($id_funcionario, $id_erro);}
    // if($litros <> $litros_od){$id_erro = 3;registrarErro($id_funcionario, $id_erro);}
@@ -381,7 +392,7 @@ function registrarErro($id_funcionario, $id_erro){
     $x = new DateTime('NOW', new DateTimeZone('America/Sao_Paulo'));
     $erro_data = $x->format('Y-m-d H:i');
     $erro_status = 1;
-    var_dump($sql);
+ 
     
     $sql = $pdo->prepare("INSERT INTO erros_de_registro(id_funcionario, id_erro, erro_status, erro_data) VALUES(:id_funcionario, id_erro, erro_status, erro_data)");
     $sql->bindValue(':id_funcionario', $id_funcionario);
@@ -390,7 +401,6 @@ function registrarErro($id_funcionario, $id_erro){
     $sql->bindValue(':erro_data', $erro_data);
     $sql->execute();
 
-    return var_dump($sql);
 
 }
 
