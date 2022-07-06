@@ -34,14 +34,22 @@ include 'assets/controllers/checkAcess.php';
                     <a class="w3-bar-item w3-button"><?= $usuario; ?></a>
                 </div>
                 <div class="w3-bar w3-light-grey w3-container">
-                    <table>
-                        <tr>
-                            <th>Acertos</th>
-                        </tr>
-                        <tr>
-                            <th>2</th>
-                        </tr>
-                    </table>
+                <table class="w3-table">
+                <thead>
+                    <tr>
+                        <th><center>Acertos</th>
+                        <th><center>Erros</th>
+                        <th><center>% Acertos</th>  
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><center>1</th>
+                        <th><center>1</th>
+                        <th><center>10%</th>  
+                    </tr>
+                </tbody>
+            </table>
                 </div> 
                 <?php if($msgSucesso){echo $msgSucesso;}?>
                     <form class="menu" method="POST">
