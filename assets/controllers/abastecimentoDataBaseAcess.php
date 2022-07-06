@@ -428,7 +428,7 @@ function listarAcertos($id_funcionario){
     foreach($lista as $row){
 
         $txtTable = $txtTable.'<tr>
-        <td>'.dmaH($row['acertos']).'</td>
+        <td>'.$row['acertos'].'</td>
         </tr>';
     }
 
