@@ -195,11 +195,12 @@ function registrarAbastecimento(){
     if($diferencakm < 0 || $diferencakm > 600){
         $id_erro = 1;
         registrarErro($id_funcionario, $id_erro);
-    }elseif($diferencahr < 0 || $diferencahr > 48){
+    }
+    if($diferencahr < 0 || $diferencahr > 48){
         $id_erro = 2;
         registrarErro($id_funcionario, $id_erro);
     }
-    elseif($litros <> $litros_od){
+    if($litros <> $litros_od){
         $id_erro = 3;
         registrarErro($id_funcionario, $id_erro);
     }else{
