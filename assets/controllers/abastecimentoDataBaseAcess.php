@@ -383,8 +383,8 @@ function registrarErro($id_funcionario, $id_erro){
     include 'config.php';
     include 'functions.php';
 
-    $erro_data = new DateTime('NOW', new DateTimeZone('America/Sao_Paulo'));
-    $erro_data = $erro_data->format('Y-m-d H:i');
+    $x = new DateTime('NOW', new DateTimeZone('America/Sao_Paulo'));
+    $erro_data = $y->format('Y-m-d H:i');
     $erro_status = 1;
     
     $sql = $pdo->prepare("INSERT INTO erros_de_registro(id_funcionario, id_erro, erro_status, erro_data) VALUES(:id_funcionario, id_erro, erro_status, erro_data)");
