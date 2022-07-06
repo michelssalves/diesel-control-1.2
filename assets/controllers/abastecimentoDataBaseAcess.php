@@ -384,14 +384,14 @@ function registrarErro($id_funcionario, $id_erro){
     include 'functions.php';
 
     $x = new DateTime('NOW', new DateTimeZone('America/Sao_Paulo'));
-    $erro_data = $y->format('Y-m-d H:i');
+    $erro_data = $x->format('Y-m-d H:i');
     $erro_status = 1;
     
     $sql = $pdo->prepare("INSERT INTO erros_de_registro(id_funcionario, id_erro, erro_status, erro_data) VALUES(:id_funcionario, id_erro, erro_status, erro_data)");
     var_dump($sql);
-    
+
     $sql->bindValue(':id_funcionario', $id_funcionario);
-    $sql->bindValue(':erro_km', $id_erro);
+    $sql->bindValue(':id_erro', $id_erro);
     $sql->bindValue(':erro_status', $erro_status);
     $sql->bindValue(':erro_data', $erro_data);
     $sql->execute();
