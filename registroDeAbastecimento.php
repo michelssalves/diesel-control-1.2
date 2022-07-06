@@ -43,7 +43,7 @@ include 'assets/controllers/checkAcess.php';
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="thead-dark">
+                    <tr class="tbody-dark">
                         <th><center>1</th>
                         <th><center>1</th>
                         <th><center>10%</th>  
