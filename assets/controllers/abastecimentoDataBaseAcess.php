@@ -417,5 +417,33 @@ function registrarAcerto($id_funcionario, $id_erro){
     $sql->execute();
 
 }
+function listarAcertos($id_funcionario){
+    include 'config.php';
 
+    $sql = $pdo->prepare("SELECT COUNT(erro_status) AS acertos FROM erros_de_registro WHERE id_funcionario = :id_funcionario AND id_erro = 4 ");
+    $sql->bindValue(':id_funcionario', $id_funcionario);
+    $sql->execute();
+    $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach($lista as $row){
+
+        $txtTable = $txtTable.'<tr>
+        <td>'.dmaH($row['acertos']).'</td>
+        </tr>';
+    }
+
+    $sql = $pdo->prepare("SELECT COUNT(erro_status) AS erros FROM erros_de_registro WHERE id_funcionario = :id_funcionario AND id_erro <> 4 ");
+    $sql->bindValue(':id_funcionario', $id_funcionario);
+    $sql->execute();
+    $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach($lista as $row){
+
+        $txtTable = $txtTable.'<tr>
+        <td>'.$row['erros'].'</td>
+        </tr>';
+    }
+
+    return $txtTable;
+}
 ?>

@@ -44,9 +44,7 @@ include 'assets/controllers/checkAcess.php';
                 </thead>
                 <tbody>
                     <tr>
-                        <th><center>1</th>
-                        <th><center>1</th>
-                        <th><center>10%</th>  
+                    <?= listarAcertos($id_funcionario) ?>
                     </tr>
                 </tbody>
             </table>
