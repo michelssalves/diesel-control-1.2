@@ -55,6 +55,7 @@ function menuPrincipal(){
     
     include 'config.php';
 
+    
     $permissao = $_SESSION['id_permissao'];
 
     $sql = $pdo->query("SELECT * FROM menu_principal WHERE id_permissao <= $permissao");
