@@ -394,6 +394,8 @@ function registrarErro($id_funcionario, $id_erro){
     $sql->bindValue(':erro_data', $erro_data);
     $sql->execute();
 
+    var_dump($sql);
+
 }
 
 ?>
