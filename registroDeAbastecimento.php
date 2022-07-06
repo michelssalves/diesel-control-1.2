@@ -27,19 +27,21 @@ include 'assets/controllers/checkAcess.php';
 <div class="container-md">
         <div class="container-lg">
             <div class="container-xl">
-                <div class="container-xxl">    
-    <div class="field">
-        <table>
-            <tr>
-                <th>Acertos</th>
-            </tr>
-        </table>
-    </div>
-
+                <div class="container-xxl">   
                 <div class="w3-bar w3-light-grey">
                     <a href="logout-v2"class="w3-bar-item w3-button w3-red w3-right">Sair</a>
                     <label class="w3-bar-item w3-button w3-left">Usuario Logado:</label>
                     <a class="w3-bar-item w3-button"><?= $usuario; ?></a>
+                </div>
+                <div class="w3-bar w3-light-grey">
+                    <table>
+                        <tr>
+                            <th>Acertos</th>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                        </tr>
+                    </table>
                 </div> 
                 <?php if($msgSucesso){echo $msgSucesso;}?>
                     <form class="menu" method="POST">
