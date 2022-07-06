@@ -381,6 +381,7 @@ function registrarErro($id_funcionario, $id_erro){
     $x = new DateTime('NOW', new DateTimeZone('America/Sao_Paulo'));
     $erro_data = $x->format('Y-m-d H:i');
     $erro_status = 1;
+    var_dump($sql);
     
     $sql = $pdo->prepare("INSERT INTO erros_de_registro(id_funcionario, id_erro, erro_status, erro_data) VALUES(:id_funcionario, id_erro, erro_status, erro_data)");
     $sql->bindValue(':id_funcionario', $id_funcionario);
