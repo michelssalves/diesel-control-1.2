@@ -30,10 +30,10 @@ include 'assets/controllers/checkAcess.php';
             <div class="container-xl">
                 <div class="container-xxl">
                     <div class="w3-bar w3-light-grey">
-                        <a href="menu-principal" class="w3-bar-item w3-button">Menu Principal</a>
-                        <a href="controle-de-combustivel" class="w3-bar-item w3-button">Controles</a>
+                        <a href="menu-principal-v2" class="w3-bar-item w3-button">Menu Principal</a>
+                        <a href="controle-de-combustivel-v2" class="w3-bar-item w3-button">Controles</a>
                         <button class="w3-button w3-green" onClick="table2excel('t1')">Excel</button>
-                        <a href="logout" class="w3-bar-item w3-button w3-red w3-right">Sair</a>
+                        <a href="logout-v2" class="w3-bar-item w3-button w3-red w3-right">Sair</a>
                         <a class="w3-bar-item w3-button w3-right"><?= $usuario; ?></a>
                     </div>
                     <nav class="navbar navbar-expand-lg navbar-light bg-light">
