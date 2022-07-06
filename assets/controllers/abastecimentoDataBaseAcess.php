@@ -422,7 +422,7 @@ function registrarAcerto($id_funcionario, $id_erro, $id_abastecimento){
 }
 function listarAcertos($id_funcionario){
     include 'config.php';
-    //include 'functions.php';
+
 
     $sql = $pdo->prepare("SELECT a.acertos, b.erros, c.qtde_abastecimentos FROM 
     (SELECT COUNT(erro_status) AS erros FROM erros_de_registro WHERE id_funcionario = :id_funcionario AND id_erro <> 4) AS b, 
