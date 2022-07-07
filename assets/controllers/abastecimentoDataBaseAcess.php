@@ -518,7 +518,7 @@ function listarAcertos($id_funcionario){
             $v2 = $v1/$row['qtde_abastecimentos'];
             $txtTableQuadro = $txtTableQuadro.'<tr>
             <td><center>'.$row['acertos'].'</td>
-            <td><a style="text-decoration:none; cursor:pointer" href="visualizador-de-erros-v2">'.$row['erros'].'</a></td>
+            <td><center><a style="text-decoration:none; cursor:pointer" href="visualizador-de-erros-v2">'.$row['erros'].'</a></td>
             <td><center>'.number_format($v2,'2',',','.').'%</td>
             </tr>';
         
@@ -526,7 +526,7 @@ function listarAcertos($id_funcionario){
         }else{
         $txtTableQuadro = $txtTableQuadro.'<tr>
         <td><center>0</td>
-        <td><a style="text-decoration:none; cursor:pointer" href="visualizador-de-erros-v2">0</a></td>
+        <td><center><a style="text-decoration:none; cursor:pointer" href="visualizador-de-erros-v2">0</a></td>
         <td><center>0%</td>
         </tr>';
     }
