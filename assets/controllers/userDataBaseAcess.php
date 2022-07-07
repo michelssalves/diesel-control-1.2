@@ -58,8 +58,7 @@ function login($usuario, $senha){
                     $_SESSION['id_permissao'] = $row['id_permissao'];
                     $_SESSION['token'] = $row['token'];
 
-                }   
-                
+                }                   
                 header("Location: menu-principal-v2");            
              } 
             
@@ -87,30 +86,4 @@ function menuPrincipal(){
     }
     return $tableMenu;
 }
-
-function informacoesVeiculo($id_veiculo){
-
-    include 'config.php';
-
-    $id_veiculo =  intval($_REQUEST['id_veiculo']);
-    $sql = $pdo->prepare("SELECT * FROM abastecimentos
-	WHERE id_veiculo = :id_veiculo  ORDER BY data_abastecimento DESC LIMIT 1");
-	$sql->bindValue(':id_veiculo', $id_veiculo);
-	$sql->execute();
-	$row = $sql->fetch(PDO::FETCH_ASSOC);
-    $ultimoKm = $row['km'];
-    if($row['km'] < 0){$ultimoKm = 0;}
-    $ultimoHr = $row['hr'];
-    if($row['hr'] < 0){$ultimoHr = 0;}
-    
-
-    $informacoesVeiculo = [
-        'ultimoKm' => $ultimoKm,
-        'ultimoHr' => $ultimoHr
-    ];
-
-    return $informacoesVeiculo;
-
-}
-  
 ?>
