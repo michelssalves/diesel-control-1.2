@@ -512,17 +512,18 @@ function listarAcertos($id_funcionario){
     if($sql->rowCount() > 0){
     $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
    
-    foreach($lista as $row){
+        foreach($lista as $row){
 
-        $v1 = $row['acertos'] * 100; 
-        $v2 = $v1/$row['qtde_abastecimentos'];
-        $txtTableQuadro = $txtTableQuadro.'<tr>
-        <td><center>'.$row['acertos'].'</td>
-        <td <a href="visualizador-de-erros-v2">><center>'.$row['erros'].'</a></td>
-        <td><center>'.number_format($v2,'2',',','.').'%</td>
-        </tr>';
+            $v1 = $row['acertos'] * 100; 
+            $v2 = $v1/$row['qtde_abastecimentos'];
+            $txtTableQuadro = $txtTableQuadro.'<tr>
+            <td><center>'.$row['acertos'].'</td>
+            <a href="visualizador-de-erros-v2"><td ><center>'.$row['erros'].'</td></a>
+            <td><center>'.number_format($v2,'2',',','.').'%</td>
+            </tr>';
         
-    }}else{
+            }
+        }else{
         $txtTableQuadro = $txtTableQuadro.'<tr>
         <td><center>0</td>
         <td <a href="visualizador-de-erros-v2">><center>0</a></td>
