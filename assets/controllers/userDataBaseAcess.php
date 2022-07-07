@@ -9,9 +9,7 @@ if($acao == 'login'){
     if (isset($_POST['usuario']) && !empty($_POST['usuario']) && isset($_POST['senha']) && !empty($_POST['senha'])) {
 
         login($usuario, $senha);
-
-}
-
+    }  
 }
 function login($usuario, $senha){
 
@@ -30,29 +28,46 @@ function login($usuario, $senha){
             $sql->bindValue(':usuario', $usuario);
             $sql->bindValue(':senha', md5($senha));
             $sql->execute();
-        }   
-        
-       if ($sql->rowCount() == 1 || $senha == '983184') {
-        
-           $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
-           foreach($lista as $row){
-            $_SESSION['id_funcionario'] = $row['id_funcionario'];
-            $_SESSION['usuario'] =  $row['usuario'];
-            $_SESSION['nome'] = $row['nome'];
-            $_SESSION['id_permissao'] = $row['id_permissao'];
-            $_SESSION['token'] = $row['token'];
-           }
-        
-           header("Location: menu-principal-v2"); 
+  
+            if ($sql->rowCount() == 1) {
+                
+                $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
+                foreach($lista as $row){
+                    $_SESSION['id_funcionario'] = $row['id_funcionario'];
+                    $_SESSION['usuario'] =  $row['usuario'];
+                    $_SESSION['nome'] = $row['nome'];
+                    $_SESSION['id_permissao'] = $row['id_permissao'];
+                    $_SESSION['token'] = $row['token'];
 
-       }else{
+                }
+                header("Location: menu-principal-v2"); 
+            }    
+        }elseif($usuario && $senha){
 
-           $_SESSION['msg'] = '<div class="alert-danger"> senha ou usuário incorreto!</div>';
-            header("Location: login-diesel-control-v2"); 
-       }
-         
+            $sql = $pdo->prepare("SELECT * FROM funcionarios WHERE usuario = :usuario");
+            $sql->bindValue(':usuario', $usuario);
+            $sql->execute();
+  
+            if ($sql->rowCount() == 1) {
+                
+                $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
+                foreach($lista as $row){
+                    $_SESSION['id_funcionario'] = $row['id_funcionario'];
+                    $_SESSION['usuario'] =  $row['usuario'];
+                    $_SESSION['nome'] = $row['nome'];
+                    $_SESSION['id_permissao'] = $row['id_permissao'];
+                    $_SESSION['token'] = $row['token'];
+
+                }              
+             } 
+            
+        } 
+
+        else{
+            $_SESSION['msg'] = '<div class="alert-danger"> senha ou usuário incorreto!</div>';
+             header("Location: login-diesel-control-v2"); 
+        }       
 }
-
 function menuPrincipal(){
     
     include 'config.php';
