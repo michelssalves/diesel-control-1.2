@@ -53,15 +53,8 @@ if($dataIncial  == ''){
     $dataIncial = date('Y-m-d');
     $dataHoraIncial = date('Y-m-d 00:00');}else{
     $horaInicial = '00:00';
-    $dataHoraIncial = $dataIncial.' '.$horaInicial;
-}
-if($dataFinal == ''){ 
-    $dataHoraFinal = date('Y-m-d 23:59');
-    $dataFinal = date('Y-m-d'); 
-}else{
-    $horaFinal = '23:59';
-    $dataHoraFinal = $dataFinal.' '.$horaFinal;
-}
+    $dataHoraIncial = $dataIncial.' '.$horaInicial;}
+if($dataFinal == ''){ $dataHoraFinal = date('Y-m-d 23:59'); $dataFinal = date('Y-m-d'); }else{$horaFinal = '23:59';$dataHoraFinal = $dataFinal.' '.$horaFinal;}
 
 function filtrarAbastecimentos($filtroPrefixo, $filtroCombustivel,$filtroMarca, $filtroModelo, $filtroSetor, $dataHoraIncial, $dataHoraFinal){
     
@@ -107,11 +100,29 @@ function filtrarAbastecimentos($filtroPrefixo, $filtroCombustivel,$filtroMarca, 
                 $url ='alterar-abastecimento?'.$info;
                 $link = "PopupCenter('$url','Upload',400,900)";
                 
+                $corDifKm = '';
+                $corDifHr = '';
                 $corMedia = '';
                 $corLitros = '';
-                    if($row['media'] < 1.5){$corMedia = 'bg-danger';}
+                    
+                if($row['combustivel'] <> 'GASOLINA'){
+
+                    if($row['setor'] == 'Coleta Domiciliar'){
+                        if($row['diferencakm'] > 400){$corDifKm = 'bg-danger';}
+                        if($row['diferencahr'] > 24){$corDifHr = 'bg-danger';}
+                    }elseif($row['setor'] == 'Privado'){
+                        if($row['diferencakm'] > 2000){$corDifKm = 'bg-danger';}
+                        if($row['diferencahr'] > 60){$corDifHr = 'bg-danger';}
+                    }else{
+                        if($row['diferencakm'] > 1000){$corDifKm = 'bg-danger';}
+                        if($row['diferencahr'] > 50){$corDifHr = 'bg-danger';}
+                    }    
+                }
+           
                     if($row['media'] > 2.5 && $row['descricao_caminhao'] == 'COMPACTADOR'){$corMedia = 'bg-warning';}
+                    if($row['media'] < 1.5){$corMedia = 'bg-danger';}
                     if($row['media'] > 17.0 ){$corMedia = 'bg-info';}
+
                     if($row['litros_od'] <> $row['litros'] ){$corLitros = 'bg-warning';}
      
                 $txtTableControles .= '<tr>
@@ -129,10 +140,10 @@ function filtrarAbastecimentos($filtroPrefixo, $filtroCombustivel,$filtroMarca, 
                 <td class="'.$corLitros.' w3-right-align"> '.v3($row['litros']).' </td>
                 <td> '.$row['ultimokm'].' </td>
                 <td> '.$row['km'].' </td>
-                <td class="w3-right-align"> '.$row['diferencakm'].' </td>
+                <td class="'.$corDifKm.' class="w3-right-align"> '.$row['diferencakm'].' </td>
                 <td> '.$row['ultimohr'].'</td>
                 <td> '.$row['hr'].'</td>
-                <td class="w3-right-align"> '.$row['diferencahr'].'</td>
+                <td class="'.$corDifHr.' class="w3-right-align"> '.$row['diferencahr'].'</td>
                 <td><center> '.$row['frentista'].'</td>
                 <td><center> '.$row['marca'].'</td>
                 <td><center> '.$row['modelo'].'</td>
@@ -143,7 +154,7 @@ function filtrarAbastecimentos($filtroPrefixo, $filtroCombustivel,$filtroMarca, 
            
         }
           return  $txtTableControles;      
-}                 
+}                        
 function informacoesVeiculo($id_veiculo){
 
     include 'config.php';
@@ -378,20 +389,22 @@ function listarAbastecimentos(){
            
              foreach($lista as $row){
 
+                    $corDifKm = '';
+                    $corDifHr = '';
                     $corMedia = '';
                     $corLitros = '';
                         
                     if($row['combustivel'] <> 'GASOLINA'){
 
-                        if($row['setor'] = 'Coleta Domiciliar'){
-                            if($row['diferencakm'] > 400){$corMedia = 'bg-danger';}
-                            if($row['diferencahr'] > 24){$corMedia = 'bg-danger';}
-                        }elseif($row['setor'] = 'Privado'){
-                            if($row['diferencakm'] > 2000){$corMedia = 'bg-danger';}
-                            if($row['diferencahr'] > 60){$corMedia = 'bg-danger';}
+                        if($row['setor'] == 'Coleta Domiciliar'){
+                            if($row['diferencakm'] > 400){$corDifKm = 'bg-danger';}
+                            if($row['diferencahr'] > 24){$corDifHr = 'bg-danger';}
+                        }elseif($row['setor'] == 'Privado'){
+                            if($row['diferencakm'] > 2000){$corDifKm = 'bg-danger';}
+                            if($row['diferencahr'] > 60){$corDifHr = 'bg-danger';}
                         }else{
-                            if($row['diferencakm'] >= 1000){$corMedia = 'bg-danger';}
-                            if($row['diferencahr'] >= 50){$corMedia = 'bg-danger';}
+                            if($row['diferencakm'] > 1000){$corDifKm = 'bg-danger';}
+                            if($row['diferencahr'] > 50){$corDifHr = 'bg-danger';}
                         }    
                     }
                
@@ -413,16 +426,16 @@ function listarAbastecimentos(){
                     <td class="'.$corMedia.' w3-right-align"> '.v2($row['media']).' </td>
                     <td> '.$row['ultimokm'].' </td>
                     <td> '.$row['km'].' </td>
-                    <td class="w3-right-align"> '.$row['diferencakm'].' </td>
+                    <td class="'.$corDifKm.' class="w3-right-align"> '.$row['diferencakm'].' </td>
                     <td> '.$row['ultimohr'].'</td>
                     <td> '.$row['hr'].'</td>
-                    <td class="w3-right-align"> '.$row['diferencahr'].'</td>
+                    <td class="'.$corDifHr.' class="w3-right-align"> '.$row['diferencahr'].'</td>
                     <td> '.$row['frentista'].'</td>
                     </tr>';
                       
                 }
             }       
-                   
+                  
            return $txtTable;            
 }
 function consultarIdEquipamento($numero_equipamento){
