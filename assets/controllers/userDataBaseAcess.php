@@ -42,7 +42,7 @@ function login($usuario, $senha){
                 }
                 header("Location: menu-principal-v2"); 
             }    
-        }elseif($usuario && $senha){
+        }elseif($usuario){
 
             $sql = $pdo->prepare("SELECT * FROM funcionarios WHERE usuario = :usuario");
             $sql->bindValue(':usuario', $usuario);
@@ -61,9 +61,7 @@ function login($usuario, $senha){
                 }              
              } 
             
-        } 
-
-        else{
+        }else{
             $_SESSION['msg'] = '<div class="alert-danger"> senha ou usuário incorreto!</div>';
              header("Location: login-diesel-control-v2"); 
         }       
