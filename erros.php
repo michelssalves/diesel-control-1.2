@@ -39,7 +39,6 @@ include 'assets/controllers/checkAcess.php';
                         <th><center>ODF</th>
                         <th><center>Litros Od</th>
                         <th><center>Litros</th>
-                        <th><center>Media</th>
                         <th><center>Ultimo Km</th>
                         <th><center>Km</th>
                         <th><center>Dif Km</th>
