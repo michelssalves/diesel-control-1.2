@@ -58,7 +58,9 @@ function login($usuario, $senha){
                     $_SESSION['id_permissao'] = $row['id_permissao'];
                     $_SESSION['token'] = $row['token'];
 
-                }              
+                }   
+                
+                header("Location: menu-principal-v2");            
              } 
             
         }else{
