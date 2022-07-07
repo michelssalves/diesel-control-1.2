@@ -235,7 +235,7 @@ function registrarAbastecimento(){
     $sql->execute();
     $id_abastecimento = $pdo->lastInsertId();
 
-    $lista = consultarEquipamento($id_equipamento);
+    $lista = consultarEquipamento($id_veiculo);
     foreach($lista as $row){
         $setor = $row['setor'];
         $modelo = $row['modelo'];
@@ -425,11 +425,11 @@ function consultarIdEquipamento($numero_equipamento){
     return  $id_veiculo;
  
 }
-function consultarEquipamento($id_equipamento){
+function consultarEquipamento($id_veiculo){
     include 'config.php';
    
-    $sql = $pdo->prepare("SELECT * FROM veiculos WHERE id_equipamento = :id_equipamento");
-    $sql->bindValue(':id_equipamento', $id_equipamento);
+    $sql = $pdo->prepare("SELECT * FROM veiculos WHERE id_veiculo = :id_veiculo");
+    $sql->bindValue(':id_veiculo', $id_veiculo);
     $sql->execute();
     $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
     return  $lista;
